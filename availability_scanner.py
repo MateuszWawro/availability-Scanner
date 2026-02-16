@@ -20,6 +20,15 @@ class ServiceChecker:
             'User-Agent': 'AvailabilityScanner/1.0'
         })
     
+    def __enter__(self):
+        """Context manager entry"""
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """Context manager exit - cleanup resources"""
+        self.session.close()
+        return False
+    
     def check_http(self, url: str, expected_status: int = 200) -> Tuple[bool, str]:
         """Check HTTP endpoint availability"""
         try:
@@ -51,10 +60,9 @@ class ServiceChecker:
         """Check Google DNS (8.8.8.8)"""
         try:
             # Try to resolve a known domain using Google DNS
-            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            sock.settimeout(self.timeout)
-            sock.connect(("8.8.8.8", 53))
-            sock.close()
+            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
+                sock.settimeout(self.timeout)
+                sock.connect(("8.8.8.8", 53))
             return True, "Port 53 accessible"
         except Exception:
             return False, "Port 53 not accessible"
@@ -126,31 +134,30 @@ def main():
     print("=" * 70)
     print()
     
-    checker = ServiceChecker(timeout=10)
-    
-    # Define services to check
-    services = [
-        ("AWS", checker.check_aws),
-        ("Claude (Anthropic)", checker.check_claude),
-        ("Cloudflare", checker.check_cloudflare),
-        ("Google DNS", checker.check_google_dns),
-        ("Microsoft Teams", checker.check_teams),
-        ("Microsoft 365", checker.check_microsoft_365),
-        ("OpenAI", checker.check_openai),
-        ("GitHub Copilot", checker.check_copilot),
-        ("Docker Hub", checker.check_docker_hub),
-        ("Pingdom", checker.check_pingdom),
-        ("GitHub (Bonus)", checker.check_github),
-    ]
-    
-    # Check all services
-    results = []
-    for service_name, check_func in services:
-        print(f"Checking {service_name}...", end=" ", flush=True)
-        is_available, details = check_func()
-        status = format_status(is_available)
-        results.append([service_name, status, details])
-        print(status)
+    with ServiceChecker(timeout=10) as checker:
+        # Define services to check
+        services = [
+            ("AWS", checker.check_aws),
+            ("Claude (Anthropic)", checker.check_claude),
+            ("Cloudflare", checker.check_cloudflare),
+            ("Google DNS", checker.check_google_dns),
+            ("Microsoft Teams", checker.check_teams),
+            ("Microsoft 365", checker.check_microsoft_365),
+            ("OpenAI", checker.check_openai),
+            ("GitHub Copilot", checker.check_copilot),
+            ("Docker Hub", checker.check_docker_hub),
+            ("Pingdom", checker.check_pingdom),
+            ("GitHub (Bonus)", checker.check_github),
+        ]
+        
+        # Check all services
+        results = []
+        for service_name, check_func in services:
+            print(f"Checking {service_name}...", end=" ", flush=True)
+            is_available, details = check_func()
+            status = format_status(is_available)
+            results.append([service_name, status, details])
+            print(status)
     
     print()
     print("=" * 70)
