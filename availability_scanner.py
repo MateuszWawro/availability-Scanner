@@ -92,8 +92,6 @@ class ServiceChecker:
         # Check Microsoft 365 status page
         return self.check_http("https://www.microsoft.com/en-us/microsoft-365")
     
-
-    
     def check_copilot(self) -> Tuple[bool, str]:
         """Check GitHub Copilot availability"""
         # Check GitHub Copilot page
