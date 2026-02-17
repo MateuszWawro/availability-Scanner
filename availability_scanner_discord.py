@@ -9,7 +9,7 @@ import sys
 import time
 import json
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, List, Tuple
 
 # Import all functionality from the original scanner
@@ -69,7 +69,7 @@ def send_discord_notification(webhook_url: str, results: List[Tuple[str, bool, s
         "footer": {
             "text": f"Total: {total} | Online: {online} ({online_pct:.1f}%) | Offline: {offline} ({offline_pct:.1f}%)"
         },
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat()
     }
     
     # Create payload
