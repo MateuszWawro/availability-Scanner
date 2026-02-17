@@ -95,7 +95,7 @@ class ServiceChecker:
     def check_openai(self) -> Tuple[bool, str]:
         """Check OpenAI availability"""
         # Check OpenAI website
-        return self.check_http("https://www.openai.com")
+        return self.check_http("https://www.chatgpt.com")
     
     def check_copilot(self) -> Tuple[bool, str]:
         """Check GitHub Copilot availability"""
