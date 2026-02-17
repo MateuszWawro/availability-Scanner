@@ -11,7 +11,6 @@ A Python-based tool to monitor the availability of popular online services.
   - Google DNS
   - Microsoft Teams
   - Microsoft 365
-  - OpenAI
   - GitHub Copilot
   - Docker Hub
   - Pingdom

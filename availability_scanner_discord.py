@@ -121,7 +121,6 @@ def run_checks() -> Tuple[List[Tuple[str, bool, str]], str]:
             ("Google DNS", checker.check_google_dns),
             ("Microsoft Teams", checker.check_teams),
             ("Microsoft 365", checker.check_microsoft_365),
-            ("OpenAI", checker.check_openai),
             ("GitHub Copilot", checker.check_copilot),
             ("Docker Hub", checker.check_docker_hub),
             ("Pingdom", checker.check_pingdom),
@@ -156,7 +155,7 @@ def main():
     """
     # Get configuration from environment variables
     webhook_url = os.environ.get("DISCORD_WEBHOOK_URL", "")
-    check_interval = int(os.environ.get("CHECK_INTERVAL", "300"))
+    check_interval = int(os.environ.get("CHECK_INTERVAL", "1800"))
     
     print("🚀 Starting Availability Scanner with Discord Notifications")
     print(f"📡 Check Interval: {check_interval} seconds ({check_interval/60:.1f} minutes)")

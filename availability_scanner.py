@@ -92,10 +92,7 @@ class ServiceChecker:
         # Check Microsoft 365 status page
         return self.check_http("https://www.microsoft.com/en-us/microsoft-365")
     
-    def check_openai(self) -> Tuple[bool, str]:
-        """Check OpenAI availability"""
-        # Check OpenAI website
-        return self.check_http("https://www.chatgpt.com")
+
     
     def check_copilot(self) -> Tuple[bool, str]:
         """Check GitHub Copilot availability"""
@@ -143,7 +140,6 @@ def main():
             ("Google DNS", checker.check_google_dns),
             ("Microsoft Teams", checker.check_teams),
             ("Microsoft 365", checker.check_microsoft_365),
-            ("OpenAI", checker.check_openai),
             ("GitHub Copilot", checker.check_copilot),
             ("Docker Hub", checker.check_docker_hub),
             ("Pingdom", checker.check_pingdom),
