@@ -66,7 +66,6 @@ Checking Cloudflare... ✅ Online
 Checking Google DNS... ✅ Online
 Checking Microsoft Teams... ✅ Online
 Checking Microsoft 365... ✅ Online
-Checking OpenAI... ✅ Online
 Checking GitHub Copilot... ✅ Online
 Checking Docker Hub... ✅ Online
 Checking Pingdom... ✅ Online
@@ -91,8 +90,6 @@ Summary Report
 +--------------------+-----------+--------------------+
 | Microsoft 365      | ✅ Online | HTTP 200           |
 +--------------------+-----------+--------------------+
-| OpenAI             | ✅ Online | HTTP 200           |
-+--------------------+-----------+--------------------+
 | GitHub Copilot     | ✅ Online | HTTP 200           |
 +--------------------+-----------+--------------------+
 | Docker Hub         | ✅ Online | HTTP 200           |
@@ -102,8 +99,8 @@ Summary Report
 | GitHub (Bonus)     | ✅ Online | HTTP 200           |
 +--------------------+-----------+--------------------+
 
-Total Services Checked: 11
-Online: 11 (100.0%)
+Total Services Checked: 10
+Online: 10 (100.0%)
 Offline: 0 (0.0%)
 ```
 
