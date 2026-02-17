@@ -122,16 +122,16 @@ The scanner uses a default timeout of 10 seconds for each check. You can modify 
 
 ## 🐳 Docker Deployment
 
-Aplikacja może być uruchomiona jako kontener Docker z automatycznymi powiadomieniami na Discord.
+The application can be run as a Docker container with automatic Discord notifications.
 
-Zobacz [README_DOCKER.md](README_DOCKER.md) dla szczegółowych instrukcji.
+See [README_DOCKER.md](README_DOCKER.md) for detailed instructions.
 
 ### Quick Start
 ```bash
 docker-compose up -d
 ```
 
-Więcej informacji w [README_DOCKER.md](README_DOCKER.md).
+More information available in [README_DOCKER.md](README_DOCKER.md).
 
 ## License
 
