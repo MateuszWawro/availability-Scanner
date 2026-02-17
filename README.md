@@ -120,6 +120,19 @@ The scanner uses HTTP/HTTPS requests to check the availability of web services a
 
 The scanner uses a default timeout of 10 seconds for each check. You can modify the timeout and other parameters by editing the `availability_scanner.py` file.
 
+## 🐳 Docker Deployment
+
+The application can be run as a Docker container with automatic Discord notifications.
+
+See [README_DOCKER.md](README_DOCKER.md) for detailed instructions.
+
+### Quick Start
+```bash
+docker-compose up -d
+```
+
+More information available in [README_DOCKER.md](README_DOCKER.md).
+
 ## License
 
 MIT License
