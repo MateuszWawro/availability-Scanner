@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  availability-scanner:
+    build: .
+    container_name: availability-scanner
+    restart: unless-stopped
+    environment:
+      - DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/1473201376677855404/Uyzekbpn-BxDuACtQvqMHPn-Dq4LHqqPrQyffLyKBNBtmPPKQhtYxS3a-r1tkf1loxKQ
+      - CHECK_INTERVAL=300
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    driver: bridge
